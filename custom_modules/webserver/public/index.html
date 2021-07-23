@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="style.css" />
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/canvas.js"></script>
+<script src="js/player.js"></script>
+
+<body>
+  <script>
+    const socket = io();
+
+    socket.on("connect", () => {
+      console.log("Connected");
+    });
+    socket.on("disconnect", () => {
+      console.log("Disconnected");
+    });
+  </script>
+
+  <script src="js/socket.io.js"></script>
+
+  <script>
+    window.canvas = new CANVAS();
+    window.player = new PLAYER();
+
+    const loop = function () {
+      canvas.draw();
+      player.draw(canvas);
+
+      window.requestAnimationFrame(loop);
+    };
+    loop();
+  </script>
+</body>
